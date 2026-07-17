@@ -1,6 +1,5 @@
 from math import log2
 import random
-import copy
 
 
 class DecisionTree:
@@ -51,7 +50,7 @@ class DecisionTree:
 
         return info_gain
 
-    def _split_data(self, desired_values: list[bool], attributes: list[list[bool]], training_size: float):
+    def _split_data(self,training_size: float):
         # Split data by randomly selecting training_size% of the data for training and the rest for testing
         total_size = len(self.desired_values)
         training_size = int(total_size * training_size)
@@ -130,14 +129,14 @@ class DecisionTree:
 
     def build_tree(self, training_size: float = None):
         training_size = training_size if training_size else self.training_size
-        train_attr, train_desired, test_attr, test_desired = self._split_data(self.desired_values,self.attributes, training_size)
+        train_attr, train_desired, test_attr, test_desired = self._split_data(training_size)
 
         self.tree['desired_values'] = train_desired
         self.tree['training_atts'] = train_attr
 
         self._build_nodes(self.tree)
 
-        return test_attr, test_desired
+        return train_attr, train_desired,test_attr, test_desired
     
     def make_decisions(self, test_attr: list[list[bool]], test_desired: list[bool]):
         # Make decisions based on the built tree and return the accuracy
