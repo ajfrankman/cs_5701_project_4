@@ -1,4 +1,4 @@
-# CS 5701 Project 4: Decision Tree Accuracy Study
+# CS 5701 Project 4: Decision Tree Building and Accuracy Study
 
 This project implements a small decision tree classifier for binary classification tasks and evaluates its performance on several CSV datasets. The program repeatedly trains a tree using different training ratios, then records the average training and testing accuracies for each dataset.
 
