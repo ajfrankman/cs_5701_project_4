@@ -1,4 +1,4 @@
-from helpers import run_cases, parse_file
+from helpers import run_cases
 from decision_tree import DecisionTree
 
 
